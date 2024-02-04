@@ -9,9 +9,11 @@ def transform(data, *args, **kwargs):
     print(f"Data before preprocessing is {data.shape}")
     print(f"data with zero passenger: {data['passenger_count'].isin([0]).sum()}")
     print(f"data with no distance: {data['trip_distance'].isin([0]).sum()}")
-    print(data[~((data['trip_distance'].isin([0]))&(data['passenger_count'].isin([0])))].shape)
+    print(data[(data['trip_distance']>0)&(data['passenger_count']>0)].shape)
+    
+    print(f"missing data :{data[~((data['trip_distance'].isin([0]))&(data['passenger_count'].isin([0])))].shape}")
     print(data.columns.str.contains('ID').sum())
-    data = data[~((data['trip_distance'].isin([0]))|(data['passenger_count'].isin([0])))]
+    data = data[(data['trip_distance']>0)&(data['passenger_count']>0)]
     data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date
     data.columns = data.columns.str.replace('ID', '_id').str.lower()
     print(data.passenger_count.isin([0]).sum())
