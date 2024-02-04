@@ -1,0 +1,12 @@
+triggers:
+- envs: []
+  last_enabled_at: 2024-02-03 17:49:39.322436
+  name: gcs_to_bigquery_schedule
+  pipeline_uuid: gcs_to_bigquery
+  schedule_interval: '@daily'
+  schedule_type: time
+  settings: null
+  sla: null
+  start_time: 2024-02-03 17:48:00
+  status: active
+  variables: {}
