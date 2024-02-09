@@ -1,65 +1,52 @@
 blocks:
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: data_loaders/load_green_taxi_data.py
   downstream_blocks:
-  - transform_taxi_data
+  - taxi_to_cs_parquet
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: load_api_data
+  name: load_green_taxi_data
   retry_config: null
   status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: load_api_data
+  uuid: load_green_taxi_data
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
-  downstream_blocks:
-  - taxi_data_to_postgres
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: transform_taxi_data
-  retry_config: null
-  status: executed
-  timeout: null
-  type: transformer
-  upstream_blocks:
-  - load_api_data
-  uuid: transform_taxi_data
-- all_upstream_blocks_executed: true
-  color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: data_exporters/taxi_to_cs_parquet.py
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: taxi_data_to_postgres
+  name: taxi_to_cs_parquet
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - transform_taxi_data
-  uuid: taxi_data_to_postgres
+  - load_green_taxi_data
+  uuid: taxi_to_cs_parquet
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2024-02-03 11:20:36.444338+00:00'
+created_at: '2024-02-07 01:26:40.358827+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: api_to_postgres
+name: homework_3
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -69,7 +56,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-03T15:02:08+00:00'
-uuid: api_to_postgres
+updated_at: '2024-02-09 01:27:04'
+uuid: homework_3
 variables_dir: /home/src/mage_data/de-zoomcamp
 widgets: []
