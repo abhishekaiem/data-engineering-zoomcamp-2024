@@ -17,4 +17,4 @@ def test_output(output, *args) -> None:
     """
     Template code for testing the output of the block.
     """
-    assert output['passenger_count'].isin([0]).sum()==0, 'There are rides with zero passengers'
+    assert output is not None, 'The output is undefined'

@@ -12,12 +12,12 @@ variable "bq_dataset_name" {
 
 variable "gcs_bucket_name" {
   description = "My bucket name"
-  default     = "hardy-pattern-413201-de-zoomcamp"
+  default     = "de-zoomcamp-413815-de-zoomcamp"
 }
 
 variable "gcs_project_id" {
   description = "Project Name"
-  default     = "hardy-pattern-413201"
+  default     = "de-zoomcamp-413815"
 }
 
 variable "region" {

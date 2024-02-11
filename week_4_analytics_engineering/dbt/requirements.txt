@@ -1,0 +1,7 @@
+pytz
+flask
+requests
+dbt-core
+dbt-bigquery
+Flask-RESTful
+gunicorn

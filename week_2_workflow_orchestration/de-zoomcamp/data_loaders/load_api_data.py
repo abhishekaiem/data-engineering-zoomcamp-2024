@@ -12,17 +12,17 @@ def load_data_from_api(*args, **kwargs):
     """
     Template for loading data from API
     """
-    # url = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz'
+    base_url = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_'
 
     # parse_dates = ['tpep_pickup_datetime', 'tpep_dropoff_datetime']
     # return pd.read_csv(url, sep=',', compression='gzip', parse_dates=parse_dates)
-    base_url = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_'
+    # base_url = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_'
 
-    year = 2020
-    start = 10
-    end = 12
+    year = 2021
+    start = 1
+    end = 1
     data = pd.DataFrame()
-    parse_dates = ['lpep_pickup_datetime', 'lpep_dropoff_datetime']
+    parse_dates = ['tpep_pickup_datetime', 'tpep_dropoff_datetime']
     for month in range(start, end+1):
         url = f'{base_url}{year}-{month:02d}.csv.gz'
         print(month)

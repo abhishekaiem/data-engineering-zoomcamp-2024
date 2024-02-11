@@ -6,6 +6,7 @@ blocks:
       path: data_loaders/load_api_data.py
   downstream_blocks:
   - transform_taxi_data
+  - taxi_to_gcs_parquet
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -24,7 +25,6 @@ blocks:
       path: transformers/transform_taxi_data.py
   downstream_blocks:
   - taxi_to_cs_parquet
-  - taxi_to_gcs_parquet
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -47,7 +47,7 @@ blocks:
   language: python
   name: taxi_to_cs_parquet
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -61,14 +61,46 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
+  name: nebulous tree
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: nebulous_tree
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - gcs_to_bq_partitioned
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
   name: taxi_to_gcs_parquet
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - load_api_data
+  uuid: taxi_to_gcs_parquet
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: gcs_to_bq_partitioned
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - transform_taxi_data
-  uuid: taxi_to_gcs_parquet
+  - taxi_to_gcs_parquet
+  uuid: gcs_to_bq_partitioned
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -90,7 +122,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-03 17:45:04'
+updated_at: '2024-02-10 05:38:39'
 uuid: api_to_gcs
 variables_dir: /home/src/mage_data/de-zoomcamp
 widgets: []
